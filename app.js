@@ -48,7 +48,7 @@ app.get("/api/customers/all", function(req,res){
 	
 	var getJSON = require('get-json')
 	getJSON('https://v20.lvis.io/feeds/latest_results/7/72d0ab6d-3c52-413f-871e-fb47f8aef162.json', function(error, response){
-				h = JSON.stringify(response);
+				h = JSON.stringify(response );
 				let n
 				if(h!=undefined)
 				{
