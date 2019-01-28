@@ -74,9 +74,11 @@ app.get("/api/customers/all", function(req,res){
 app.use("/",router);
 
 app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
+  res.sendFile(path + "404.html"); 
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+app.set('port', process.env.PORT || 5000);
+app.listen(app.get('port'), () => {
+  console.log(`server on port ${app.get('port')}`);
+}); 
+
