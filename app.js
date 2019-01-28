@@ -77,6 +77,6 @@ app.use("*",function(req,res){
   res.sendFile(path + "404.html");
 });
 
-app.listen(80, function () {
-  console.log('Example app listening on port 80!')
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
 })
