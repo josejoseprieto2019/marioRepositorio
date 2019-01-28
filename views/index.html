@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Spring Boot - AJAX POST GET Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/js/getrequest.js"></script>
+  <script src="/js/postrequest.js"></script>
+</head>
+
+<body style="background-color:red;"> 
+
+
+		<script type="text/javascript">
+			function autoRefreshPage()
+			{
+				//console.log('reloj');
+				realizaProceso(1,2);
+			}
+			setInterval('autoRefreshPage()', 1000);
+		</script>
+
+		<script>
+		function realizaProceso(valorCaja1, valorCaja2){
+					var parametros = {
+							"valorCaja1" : valorCaja1,
+							"valorCaja2" : valorCaja2
+					};
+					$.ajax({
+						data:  parametros,
+						type : "GET",
+						url : window.location + "api/customers/all",
+						success: function(result){
+							$('#getResultDiv1').empty();
+							$('#getResultDiv1').append(result[0].firstname + " " + result[0].lastname + "<br>")
+							//console.log("Successasasasasasasa: ", result);
+						},
+						error : function(e) {
+							//$("#getResultDiv").html("<strong>Error</strong>");
+							console.log("ERROR: ", e);
+						}
+					});
+				 }
+		 </script>
+
+<div class="container">
+<div class="col-sm-4">
+	<!-- <h3>NodeJS/Express Post/Get Ajax</h3>
+	<div>
+		<form id="customerForm">
+		  <div class="form-group">
+			<label for="firstname">FirstName:</label>
+			<input type="text" class="form-control" id="firstname" placeholder="Enter FirstName"/>
+		  </div>
+		  <div class="form-group">
+			<label for="lastname">LastName:</label>
+			<input type="text" class="form-control" id="lastname" placeholder="Enter LastName"/>
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div> -->
+	<!-- <div id="postResultDiv">
+	</div> -->
+	<!-- <button id="postResultDiv" class="btn btn-default"></button> -->
+
+	<br>
+	<div>
+		<!-- <button id="allCustomers" type="button" class="btn btn-default">Customers</button> -->
+		<!-- <button id="getResultDiv1" class="btn btn-default"></button></br> -->
+		<button id="getResultDiv1"style="position:absolute; top:170px; left: -30px; width:700px; height:500px; font-size: 170px; " class="btn-primary">0</button>
+
+	</div>
+</div>
+</div>
+</body>
+</html>
