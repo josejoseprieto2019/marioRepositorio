@@ -47,7 +47,6 @@ app.get("/api/customers/all", function(req,res){
 	
 	var getJSON = require('get-json')
 	getJSON('https://v20.lvis.io/feeds/latest_results/7/72d0ab6d-3c52-413f-871e-fb47f8aef162.json', function(error, response){
-
 		var c=response.elements[0].rating;		
 		if(c!=undefined)
 		{
@@ -55,16 +54,7 @@ app.get("/api/customers/all", function(req,res){
 			customers.push(customer);
 			return res.send(customers);
 			}
-			 else{let n =0}
-			 
-			// let resu = h.substring( n , n+14);			
-			// customer.lastname='12'
-			// console.log(resu + customer.lastname)
-		   return response
 		});
-		
-	// customers.push(customer);
-	// return res.send(customers);
 });
 
 app.use("/",router);
