@@ -40,22 +40,62 @@ app.post("/api/customers/save", function(req,res){
 });
 
 app.get("/api/customers/all", function(req,res){
-	let customers = [];
+		let customers = [];
 	let customer = {};
 	customer.firstname = Math.round(1000+Math.random()*1000);
 	customer.lastname = '11';
 	
 	var getJSON = require('get-json')
-//	getJSON('https://v20.lvis.io/feeds/latest_results/7/72d0ab6d-3c52-413f-871e-fb47f8aef162.json', function(error, response){
-	getJSON('https://v20.lvis.io/feeds/latest_results/7/23687f6b-a3c2-45ea-86d3-03b3691f1752.json', function(error, response){
-		var c=response.elements[0].rating;		
-		if(c!=undefined)
-		{
-			customer.lastname = c;
-			customers.push(customer);
-			return res.send(customers);
-			}
-		});
+
+	let valor='https://'+req.query.url;
+	//console.log(valor)
+	if(req.query.url != undefined){
+			getJSON(valor)
+			.then(function(response) {
+						var c=response.elements[0].rating;		
+						if(c!=undefined)
+						{
+							customer.lastname = c;
+							customers.push(customer);
+							return res.send(customers);
+						}
+			}).catch(function(error) {
+				return res.send('Escribiste mal direccion del JSON json !');
+				//console.log(error);
+			});
+}else{
+	getJSON('https://v20.lvis.io/feeds/latest_results/7/23687f6b-a3c2-45ea-86d3-03b3691f1752.json')
+	.then(function(response) {
+				var c=response.elements[0].rating;		
+				if(c!=undefined)
+				{
+					customer.lastname = c;
+					customers.push(customer);
+					return res.send(customers);
+				}
+	}).catch(function(error) {
+		return res.send('Escribiste mal direccion del JSON json !');
+		//console.log(error);
+	});
+
+}
+
+
+
+// //	getJSON('https://v20.lvis.io/feeds/latest_results/7/72d0ab6d-3c52-413f-871e-fb47f8aef162.json', function(error, response){
+// //	getJSON('https://v20.lvis.io/feeds/latest_results/7/23687f6b-a3c2-45ea-86d3-03b3691f1752.json', function(error, response){
+// 		getJSON(valor, function(error, response){
+// 			// if(!error){
+// 			// 	console.log(valor);
+// 			// 	var c=response.elements[0].rating;		
+// 			// 	if(c!=undefined)
+// 			// 	{
+// 			// 		customer.lastname = c;
+// 			// 		customers.push(customer);
+// 			// 		return res.send(customers);
+// 			// 		}
+// 			// 	}
+// 		 });
 });
 
 app.use("/",router);
