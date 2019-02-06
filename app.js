@@ -40,17 +40,16 @@ app.post("/api/customers/save", function(req,res){
 });
 
 app.get("/api/customers/all", function(req,res){
-		let customers = [];
+	let customers = [];
 	let customer = {};
 	customer.firstname = Math.round(1000+Math.random()*1000);
 	customer.lastname = '11';
 	
 	var getJSON = require('get-json')
 
-	let valor='https://'+req.query.url;
-	//console.log(valor)
+	let valor=req.query.url;
 	if(req.query.url != undefined){
-			getJSON(valor)
+		getJSON(valor)
 			.then(function(response) {
 						var c=response.elements[0].rating;		
 						if(c!=undefined)
