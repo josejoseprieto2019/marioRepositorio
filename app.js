@@ -40,7 +40,7 @@ app.post("/api/customers/save", function(req,res){
 });
 
 app.get("/api/customers/all", function(req,res){
-	let customers = [];
+	let customers = []; 
 	let customer = {};
 	customer.firstname = Math.round(1000+Math.random()*1000);
 	customer.lastname = '11';
@@ -80,7 +80,7 @@ app.get("/api/customers/all", function(req,res){
 }
 
 
-
+//marco
 // //	getJSON('https://v20.lvis.io/feeds/latest_results/7/72d0ab6d-3c52-413f-871e-fb47f8aef162.json', function(error, response){
 // //	getJSON('https://v20.lvis.io/feeds/latest_results/7/23687f6b-a3c2-45ea-86d3-03b3691f1752.json', function(error, response){
 // 		getJSON(valor, function(error, response){
