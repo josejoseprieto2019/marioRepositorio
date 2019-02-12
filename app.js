@@ -43,7 +43,7 @@ app.get("/api/customers/all", function(req,res){
 	let customers = []; 
 	let customer = {};
 	customer.firstname = Math.round(1000+Math.random()*1000);
-	customer.lastname = '11';
+	customer.lastname = '000'
 	
 	var getJSON = require('get-json')
 //
