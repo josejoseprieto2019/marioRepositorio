@@ -74,7 +74,6 @@ app.get("/api/customers/all", function(req,res){
 				}
 	}).catch(function(error) {
 		return res.send('Escribiste mal direccion del JSON json !');
-		//console.log(error);
 	});
 
 }
