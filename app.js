@@ -46,7 +46,7 @@ app.get("/api/customers/all", function(req,res){
 	customer.lastname = '11';
 	
 	var getJSON = require('get-json')
-
+//
 	let valor=req.query.url;
 	if(req.query.url != undefined){
 		getJSON(valor)
