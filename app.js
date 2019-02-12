@@ -51,7 +51,16 @@ app.get("/api/customers/all", function(req,res){
 	if(req.query.url != undefined){
 		getJSON(valor)
 			.then(function(response) {
-						var c=response.elements[0].rating;		
+						var c=response.elements[0].rating;	
+						//**** */
+						let largo = (c.toString()).length;
+						if(largo==3){
+							customer.lastname = c+'00';
+						}
+						if(largo==4){
+							customer.lastname = c+'0';
+						}
+							//******	
 						if(c!=undefined)
 						{
 							customer.lastname = c;
