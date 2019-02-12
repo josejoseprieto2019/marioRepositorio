@@ -54,13 +54,7 @@ app.get("/api/customers/all", function(req,res){
 						var c=response.elements[0].rating;	
 						if(c!=undefined)
 						{
-							//**** */
 							customer.lastname = c;
-							let largo = (c.toString()).length;
-							if(largo == 3){
-								customer.lastname = c+'0';
-							}
-							//******	
 							customers.push(customer);
 							return res.send(customers);
 						}
@@ -75,10 +69,6 @@ app.get("/api/customers/all", function(req,res){
 				if(c!=undefined)
 				{
 					customer.lastname = c;
-					let largo = (c.toString()).length;
-					if(largo==3){
-						customer.lastname = c+'0';
-					}
 					customers.push(customer);
 					return res.send(customers);
 				}
