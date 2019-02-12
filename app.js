@@ -58,9 +58,6 @@ app.get("/api/customers/all", function(req,res){
 							customer.lastname = c;
 							let largo = (c.toString()).length;
 							if(largo == 3){
-								customer.lastname = c+'00';
-							}
-							if(largo == 4){
 								customer.lastname = c+'0';
 							}
 							//******	
@@ -80,9 +77,6 @@ app.get("/api/customers/all", function(req,res){
 					customer.lastname = c;
 					let largo = (c.toString()).length;
 					if(largo==3){
-						customer.lastname = c+'00';
-					}
-					if(largo==4){
 						customer.lastname = c+'0';
 					}
 					customers.push(customer);
