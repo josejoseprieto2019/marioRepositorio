@@ -65,10 +65,18 @@ app.get("/api/customers/all", function(req,res){
 }else{
 	getJSON('https://v20.lvis.io/feeds/latest_results/7/23687f6b-a3c2-45ea-86d3-03b3691f1752.json')
 	.then(function(response) {
-				var c=response.elements[0].rating;		
+				var c = response.elements[0].rating;		
 				if(c!=undefined)
 				{
 					customer.lastname = c;
+					let largo = (c.toString()).length;
+					if(largo==3){
+						customer.lastname = c+'00';
+					}
+					if(largo==4){
+						customer.lastname = c+'0';
+					}
+
 					customers.push(customer);
 					return res.send(customers);
 				}
