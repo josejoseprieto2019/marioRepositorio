@@ -40,8 +40,8 @@ app.post("/api/customers/save", function(req,res){
 });
 
 app.get("/api/customers/all", function(req,res){
-	let customers = [];;
-	let customer = {};;
+	let customers = [];
+	let customer = {};
 	customer.firstname = Math.round(1000+Math.random()*1000);
 	customer.lastname = '000'
 	
