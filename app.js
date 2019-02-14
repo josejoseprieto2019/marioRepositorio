@@ -38,7 +38,7 @@ app.post("/api/customers/save", function(req,res){
 	
 	return res.send(customer);
 });
-
+//cambios2019
 app.get("/api/customers/all", function(req,res){
 	let customers = [];
 	let customer = {};
